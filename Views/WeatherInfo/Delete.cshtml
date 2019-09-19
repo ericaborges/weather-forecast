@@ -1,0 +1,176 @@
+﻿@model WeatherForecast.Models.Weather_info
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Weather_info</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.main_temp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.main_temp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.main_temp_min)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.main_temp_min)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.main_temp_max)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.main_temp_max)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.main_pressure)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.main_pressure)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.main_sea_level)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.main_sea_level)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.main_grnd_level)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.main_grnd_level)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.main_humidity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.main_humidity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.main_temp_kf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.main_temp_kf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.weather_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.weather_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.weather_main)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.weather_main)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.weather_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.weather_description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.weather_icon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.weather_icon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clouds_all)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clouds_all)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.wind_speed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.wind_speed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.wind_deg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.wind_deg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.syspod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.syspod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dt_txt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dt_txt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.snow_3h)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.snow_3h)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rain_3h)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rain_3h)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,123 @@
+﻿@model IEnumerable<WeatherForecast.Models.Weather_info>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.main_temp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.main_temp_min)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.main_temp_max)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.main_pressure)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.main_sea_level)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.main_grnd_level)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.main_humidity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.main_temp_kf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.weather_main)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.weather_description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.clouds_all)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.wind_speed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.wind_deg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dt_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.snow_3h)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rain_3h)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.main_temp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.main_temp_min)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.main_temp_max)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.main_pressure)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.main_sea_level)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.main_grnd_level)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.main_humidity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.main_temp_kf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.weather_main)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.weather_description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.clouds_all)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.wind_speed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.wind_deg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dt_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.snow_3h)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rain_3h)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.dt }) |
+            @Html.ActionLink("Details", "Details", new { id=item.dt }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.dt })
+        </td>
+    </tr>
+}
+
+</table>
