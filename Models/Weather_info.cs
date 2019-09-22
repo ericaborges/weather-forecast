@@ -12,15 +12,15 @@ namespace WeatherForecast.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int dt { get; set; }
 
-        [Display(Name = "Temp")]
+        [Display(Name = "Temperature")]
         [Column(TypeName = "numeric")]
         public decimal main_temp { get; set; }
 
-        [Display(Name = "Min")]
+        [Display(Name = "Min Temperature")]
         [Column(TypeName = "numeric")]
         public decimal main_temp_min { get; set; }
 
-        [Display(Name = "Max")]
+        [Display(Name = "Max Temperature")]
         [Column(TypeName = "numeric")]
         public decimal main_temp_max { get; set; }
 
@@ -28,18 +28,18 @@ namespace WeatherForecast.Models
         [Column(TypeName = "numeric")]
         public decimal main_pressure { get; set; }
 
-        [Display(Name = "Sea Lvl")]
+        [Display(Name = "Sea Level")]
         [Column(TypeName = "numeric")]
         public decimal main_sea_level { get; set; }
 
-        [Display(Name = "Grnd Lvl")]
+        [Display(Name = "Grnd Level")]
         [Column(TypeName = "numeric")]
         public decimal main_grnd_level { get; set; }
 
-        [Display(Name = "Humidity")]
+        [Display(Name = "Humidity %")]
         public int main_humidity { get; set; }
 
-        [Display(Name = "Temp kf")]
+        [Display(Name = "Temperature kf")]
         [Column(TypeName = "numeric")]
         public decimal main_temp_kf { get; set; }
 
@@ -55,7 +55,6 @@ namespace WeatherForecast.Models
         [StringLength(16)]
         public string weather_description { get; set; }
 
-        [Required]
         [StringLength(3)]
         public string weather_icon { get; set; }
 
@@ -70,7 +69,6 @@ namespace WeatherForecast.Models
         [Column(TypeName = "numeric")]
         public decimal wind_deg { get; set; }
 
-        [Required]
         [StringLength(1)]
         public string syspod { get; set; }
 

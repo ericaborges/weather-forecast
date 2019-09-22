@@ -1,123 +1,106 @@
-﻿@model IEnumerable<WeatherForecast.Models.Weather_info>
+﻿@model WeatherForecast.Controllers.IndexViewModel
+<div class="container my-4">
+    <h2>List of weather information</h2>
 
-@{
-    ViewBag.Title = "Index";
-}
+    <div class="row d-flex">
+        <div class="col-12 align-content-end">
+            <a title="Create new" href="@Url.Action("Create", "WeatherInfo")" class="float-right" style="font-size:28px">
+                <i class="fas fa-plus"></i>
+            </a>
+            @*@Html.ActionLink("Create New", "Create", new { area = "" }, new { @class = "float-right" })*@
+        </div>
+            
+    </div>
+    
 
-<h2>Index</h2>
+    @foreach (var item in Model.Items)
+    {
+        <div class="row border-info my-2 border">
+            <p class="col-12 pt-2 text-info my-auto font-weight-bolder">@Html.DisplayNameFor(model => item.dt_txt) :  @Html.DisplayFor(model => item.dt_txt) </p>
+            <hr class="w-100 border-primary" />
+            <div class="row col-12 my-2">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table table-bordered table-responsive table-hover">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.main_temp)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.main_temp_min)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.main_temp_max)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.main_pressure)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.main_sea_level)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.main_grnd_level)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.main_humidity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.main_temp_kf)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.weather_main)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.weather_description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.clouds_all)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.wind_speed)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.wind_deg)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dt_txt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.snow_3h)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.rain_3h)
-        </th>
-        <th></th>
-    </tr>
+                <div class="col-md-3 d-flex">
+                    <div class="col-6 d-flex flex-column">
+                        <label class="w-100 font-weight-bold">@Html.DisplayNameFor(model => item.main_temp)</label>
+                        <label class="w-100 font-weight-bold"> @Html.DisplayNameFor(model => item.main_pressure)</label>
+                    </div>
+                    <div class="col-6 d-flex flex-column">
+                        <label class="w-100">@Html.DisplayFor(modelItem => item.main_temp) °C</label>
+                        <label class="w-100">@Html.DisplayFor(modelItem => item.main_pressure) hpa</label>
+                    </div>
+                </div>
+                <div class="col-md-4 d-flex border-left border-right">
+                    <div class="col-6 d-flex flex-column">
+                        <label class="w-100 font-weight-bold">@Html.DisplayNameFor(model => item.main_temp_min)</label>
+                        <label class="w-100 font-weight-bold"> @Html.DisplayNameFor(model => item.main_temp_max)</label>
+                    </div>
+                    <div class="col-6 d-flex flex-column">
+                        <label class="w-100">@Html.DisplayFor(modelItem => item.main_temp_min) °C</label>
+                        <label class="w-100">@Html.DisplayFor(modelItem => item.main_temp_max) °C</label>
+                    </div>
+                </div>
+                <div class="col-md-4 d-flex">
+                    <div class="col-6 d-flex flex-column">
+                        <label class="w-100 font-weight-bold">@Html.DisplayNameFor(model => item.weather_main)</label>
+                        <label class="w-100 font-weight-bold">@Html.DisplayNameFor(model => item.weather_description)</label>
+                    </div>
+                    <div class="col-6 d-flex flex-column">
+                        <label class="w-100">@Html.DisplayFor(modelItem => item.weather_main)</label>
+                        <label class="w-100">@Html.DisplayFor(modelItem => item.weather_description)</label>
+                    </div>
+                </div>
+                <div class="col-md-1 d-flex flex-row justify-content-between my-auto border-left">
+                    <a title="Edit" href="@Url.Action("Edit", "WeatherInfo", new { id = item.dt })" >
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a title="Details" href="@Url.Action("Details", "WeatherInfo", new { id = item.dt })">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                    <a title="Delete" href="@Url.Action("Delete", "WeatherInfo", new { id = item.dt })">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                 
+                </div>
+            </div>
+        </div>
+    }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.main_temp)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.main_temp_min)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.main_temp_max)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.main_pressure)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.main_sea_level)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.main_grnd_level)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.main_humidity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.main_temp_kf)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.weather_main)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.weather_description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.clouds_all)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.wind_speed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.wind_deg)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dt_txt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.snow_3h)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.rain_3h)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.dt }) |
-            @Html.ActionLink("Details", "Details", new { id=item.dt }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.dt })
-        </td>
-    </tr>
-}
+    <div class="row justify-content-center d-flex">
+        <!-- pager -->
+        @if (Model.Pager.EndPage > 1)
+        {
 
-</table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    @if (Model.Pager.CurrentPage > 1)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="~/WeatherInfo/Index">First</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="~/WeatherInfo/Index?page=@(Model.Pager.CurrentPage - 1)">Previous</a>
+                        </li>
+                    }
+
+                    @for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+                    {
+                        <li class="@(page == Model.Pager.CurrentPage ? "page-item active" : "page-item")">
+                            <a class="page-link" href="~/WeatherInfo/Index?page=@page">@page</a>
+                        </li>
+                    }
+
+                    @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="~/WeatherInfo/Index?page=@(Model.Pager.CurrentPage + 1)">Next</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="~/WeatherInfo/Index?page=@(Model.Pager.TotalPages)">Last</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        }
+    </div>
+</div>

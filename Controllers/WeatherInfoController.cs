@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -12,9 +13,28 @@ namespace WeatherForecast.Controllers
         private WeatherInfoContext db = new WeatherInfoContext();
 
         // GET: WeatherInfo
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.Weather_info.ToList());
+            //get list from the database
+            var list = db.Weather_info.ToList();
+            foreach (var item in list)
+            {
+                //kelvin to celsius
+                item.main_temp -= (decimal)273.15; 
+                item.main_temp_max -= (decimal)273.15;
+                item.main_temp_min -= (decimal)273.15;
+            }
+            //initialize pager with list count
+            var pager = new Pager(list.Count(), page);
+
+            //initialize model with the list and the pager to transfer to view.
+            var viewModel = new IndexViewModel
+            {
+                Items = list.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize),
+                Pager = pager
+            };
+
+            return View(viewModel);
         }
 
         // GET: WeatherInfo/Details/5
@@ -25,10 +45,17 @@ namespace WeatherForecast.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Weather_info weather_info = db.Weather_info.Find(id);
+            
             if (weather_info == null)
             {
                 return HttpNotFound();
             }
+
+            //kelvin to celsius
+            weather_info.main_temp -= (decimal)273.15;
+            weather_info.main_temp_max -= (decimal)273.15;
+            weather_info.main_temp_min -= (decimal)273.15;
+
             return View(weather_info);
         }
 
@@ -49,14 +76,23 @@ namespace WeatherForecast.Controllers
             return View(model);
         }
 
-        // POST: WeatherInfo/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST request: WeatherInfo/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "dt,main_temp,main_temp_min,main_temp_max,main_pressure,main_sea_level,main_grnd_level,main_humidity,main_temp_kf,weather_id,weather_main,weather_description,weather_icon,clouds_all,wind_speed,wind_deg,syspod,dt_txt,snow_3h,rain_3h")] Weather_info weather_info)
+        public ActionResult Create(Weather_info weather_info)
         {
-           if (ModelState.IsValid)
+            /* we insert default values here due to not know what they mean
+             maybe they are related to other systems in the original API website */
+
+            weather_info.weather_icon = "";
+            weather_info.syspod = "";
+
+            //celsius to kelvin (keep pattern in database)
+            weather_info.main_temp += (decimal)273.15;
+            weather_info.main_temp_max += (decimal)273.15;
+            weather_info.main_temp_min += (decimal)273.15;
+
+            if (ModelState.IsValid)
             {
                 db.Weather_info.Add(weather_info);
                 db.SaveChanges();
@@ -74,22 +110,34 @@ namespace WeatherForecast.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Weather_info weather_info = db.Weather_info.Find(id);
+
             if (weather_info == null)
             {
                 return HttpNotFound();
             }
+
+            //kelvin to celsius
+            weather_info.main_temp -= (decimal)273.15;
+            weather_info.main_temp_max -= (decimal)273.15;
+            weather_info.main_temp_min -= (decimal)273.15;
+
             return View(weather_info);
         }
 
         // POST: WeatherInfo/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "dt,main_temp,main_temp_min,main_temp_max,main_pressure,main_sea_level,main_grnd_level,main_humidity,main_temp_kf,weather_id,weather_main,weather_description,weather_icon,clouds_all,wind_speed,wind_deg,syspod,dt_txt,snow_3h,rain_3h")] Weather_info weather_info)
         {
             if (ModelState.IsValid)
             {
+                weather_info.weather_icon = "";
+                weather_info.syspod = "";
+                //celsius to kelvin (keep pattern in database)
+                weather_info.main_temp += (decimal)273.15;
+                weather_info.main_temp_max += (decimal)273.15;
+                weather_info.main_temp_min += (decimal)273.15;
+
                 db.Entry(weather_info).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -109,6 +157,12 @@ namespace WeatherForecast.Controllers
             {
                 return HttpNotFound();
             }
+
+            //kelvin to celsius
+            weather_info.main_temp -= (decimal)273.15;
+            weather_info.main_temp_max -= (decimal)273.15;
+            weather_info.main_temp_min -= (decimal)273.15;
+
             return View(weather_info);
         }
 
@@ -131,5 +185,10 @@ namespace WeatherForecast.Controllers
             }
             base.Dispose(disposing);
         }
+    }
+    public class IndexViewModel
+    {
+        public IEnumerable<Weather_info> Items { get; set; }
+        public Pager Pager { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿body {
-    padding-top: 50px;
     padding-bottom: 20px;
+    overflow-x: hidden;
+    font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !important;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +22,102 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.page-section {
+    padding: 100px 0;
+}
+
+    .page-section h2.section-heading {
+        font-size: 40px;
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+
+.team-member {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+    .team-member img {
+        width: 225px;
+        height: 225px;
+        border: 7px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .team-member h4 {
+        margin-top: 25px;
+        margin-bottom: 0;
+        text-transform: none;
+    }
+
+    .team-member p {
+        margin-top: 0;
+    }
+
+
+ul.social-buttons {
+    margin-bottom: 0;
+}
+
+    ul.social-buttons li a {
+        font-size: 20px;
+        line-height: 50px;
+        display: block;
+        width: 50px;
+        height: 50px;
+        transition: all 0.3s;
+        color: white;
+        border-radius: 100%;
+        outline: none;
+        background-color: #212529;
+    }
+
+        ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons li a:hover {
+            background-color: #17a2b8;
+        }
+
+.bg-header-light {
+    background-color: #f0f8ff !important;
+}
+header.masthead {
+    position: relative;
+    background-color: #343a40;
+    background: url('img/sky.jpg') no-repeat center center;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+}
+
+    header.masthead .overlay {
+        position: absolute;
+        background-color: #212529;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0.3;
+    }
+
+    header.masthead h1 {
+        font-size: 2rem;
+    }
+
+@media (min-width: 768px) {
+    header.masthead {
+        padding-top: 12rem;
+        padding-bottom: 12rem;
+    }
+
+        header.masthead h1 {
+            font-size: 3rem;
+        }
+}
+
+.custom-nav-links {
+    font-size: 12px;
+    padding: 13px;
+    text-transform: uppercase;
+    border: 0;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
