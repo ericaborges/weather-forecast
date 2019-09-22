@@ -67,7 +67,7 @@ namespace WeatherForecast.Controllers
                 }
             }
 
-            ViewBag.Message = "File saved succesfully in: " + @"D:\forecast_" + dateNow + ".json";
+            ViewBag.Message = "File saved succesfully in: " + @"C:\forecast_" + dateNow + ".json";
 
             return View();
         }
