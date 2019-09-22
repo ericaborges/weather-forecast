@@ -32,6 +32,13 @@ namespace WeatherForecast.Controllers
 
         public ActionResult GetData()
         {
+            ViewBag.Message = "This button gets data from the Weather API.";
+
+            return View();
+        }
+
+        public ActionResult GetDataFromAPI()
+        {
             string baseUrl = "http://api.openweathermap.org/data/2.5/forecast?id=5894171&APPID=d8bab1626480bb4ce63248ad98bdf541";
 
             // Prepare the Request
@@ -69,7 +76,7 @@ namespace WeatherForecast.Controllers
 
             ViewBag.Message = "File saved succesfully in: " + @"C:\forecast_" + dateNow + ".json";
 
-            return View();
+            return View("GetData");
         }
     }
 }

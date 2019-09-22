@@ -1,5 +1,12 @@
 ﻿@{
     ViewBag.Title = "Download data from Weather API";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+    <div class="container">
+        <h2>@ViewBag.Title.</h2>
+        <p>@ViewBag.Message</p>
+
+        <hr class="w-100 border-primary" />
+        <div class="row m-1">
+            @Html.ActionLink("Get Data", "GetDataFromAPI", "Home", new { area = "" }, new { @class = "btn btn-primary" })
+        </div>
+    </div>
